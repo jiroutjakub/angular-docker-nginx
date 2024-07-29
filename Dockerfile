@@ -1,3 +1,4 @@
+### STAGE 1 ###
 # Which version of Node image to use depends on project dependencies 
 FROM node:18.19-alpine AS build
 # Create a Virtual directory inside the docker image
@@ -11,6 +12,7 @@ RUN npm install
 # Compile the application
 RUN npm run build --omit=dev
 
+### STAGE 2 ###
 # Defining nginx image to be used
 FROM nginx:latest AS ngi
 # Copying compiled code and nginx config to different folder
